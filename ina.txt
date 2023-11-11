@@ -1,0 +1,77 @@
+<?php
+session_start();
+
+$usersFile = 'users.txt';
+
+function getUser($username) {
+    global $usersFile;
+    $users = file($usersFile);
+    foreach ($users as $user) {
+        list($storedUser, $storedPass) = explode(',', trim($user));
+        if ($storedUser == $username) {
+            return $user;
+        }
+    }
+    return false;
+}
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    if (isset($_POST['login'])) {
+        $username = $_POST['username'];
+        $password = $_POST['password'];
+
+        $user = getUser($username);
+        if ($user) {
+            list($storedUser, $storedPass) = explode(',', trim($user));
+            if (password_verify($password, $storedPass)) {
+                echo "Login successful";
+                // Set session or similar login logic
+            } else {
+                echo "Invalid username or password";
+            }
+        } else {
+            echo "User not found";
+        }
+    } elseif (isset($_POST['signup'])) {
+        $username = $_POST['username'];
+        $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
+
+        if (!getUser($username)) {
+            file_put_contents($usersFile, "$username,$password\n", FILE_APPEND);
+            echo "Signup successful";
+        } else {
+            echo "Username already exists";
+        }
+    } elseif (isset($_POST['upload'])) {
+        $file = $_FILES['file'];
+
+        if ($file['size'] > 5120) {
+            echo "File too large.";
+        } else {
+            $allowedTypes = ['image/jpeg', 'image/png', 'image/gif'];
+            if (in_array($file['type'], $allowedTypes)) {
+                $uploadPath = 'upload/' . basename($file['name']);
+                if (move_uploaded_file($file['tmp_name'], $uploadPath)) {
+                    echo "File uploaded successfully";
+                } else {
+                    echo "File upload failed";
+                }
+            } else {
+                echo "Invalid file type.";
+            }
+        }
+    }
+}
+?>
+
+<form method="post">
+    <input type="text" name="username" required>
+    <input type="password" name="password" required>
+    <button type="submit" name="login">Login</button>
+    <button type="submit" name="signup">Signup</button>
+</form>
+
+<form method="post" enctype="multipart/form-data">
+    <input type="file" name="file" required>
+    <button type="submit" name="upload">Upload</button>
+</form>
