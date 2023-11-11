@@ -1,0 +1,1 @@
+<p>write php script to take login details and password and if a new user, then signupo option.Incorporate the necesarry validatiuons and the user should me able to upload files and ensure the that the files uploaded are images and not exceeding a size of 5kb.
