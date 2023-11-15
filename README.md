@@ -16,3 +16,4 @@ https://github.com/absterjr/Mit-Manipal-DSE-Lab
 
 rei files chala ayyponay naming chudandi - rahul
 ERRI PUKA RAHUL MANADHI SAME QUESTION
+# q1.html is the html file and it is linked to process.php
