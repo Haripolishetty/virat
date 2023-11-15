@@ -1,0 +1,134 @@
+oka vela kavali ante chuskondi*********************************************
+
+Question 2
+
+
+
+Database creation
+-- Create a new database
+CREATE DATABASE IF NOT EXISTS customer_database;
+
+-- Switch to the new database
+USE customer_database;
+
+-- Create a customers table
+CREATE TABLE IF NOT EXISTS customers (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(255) NOT NULL,
+    email VARCHAR(255) NOT NULL,
+    phone VARCHAR(15) NOT NULL,
+    customer_class VARCHAR(50) NOT NULL
+);
+
+
+*******************************
+Userinput.html(separate file)
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customer Details</title>
+    <script>
+        function checkCustomer() {
+            var name = document.getElementById("name").value;
+            var email = document.getElementById("email").value;
+            var phone = document.getElementById("phone").value;
+            var customerClass = document.getElementById("customer_class").value;
+
+            var xhr = new XMLHttpRequest();
+            xhr.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    alert("Customer Details:\n" + this.responseText);
+                }
+            };
+            xhr.open("POST", "check_customer.php", true);
+            xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+            xhr.send("name=" + name + "&email=" + email + "&phone=" + phone + "&customer_class=" + customerClass);
+        }
+    </script>
+</head>
+<body>
+    <h2>Customer Details</h2>
+    <form>
+        <label for="name">Name:</label>
+        <input type="text" id="name" required><br>
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" required><br>
+
+        <label for="phone">Phone:</label>
+        <input type="tel" id="phone" pattern="[0|6|9]\d{9}" required><br>
+
+        <label for="customer_class">Customer Class:</label>
+        <select id="customer_class" required>
+            <option value="premium">Premium</option>
+            <option value="gold">Gold</option>
+            <option value="standard">Standard</option>
+        </select><br>
+
+        <button type="button" onclick="checkCustomer()">Submit</button>
+    </form>
+</body>
+</html>
+
+
+
+*********************************************
+
+PHP Script (check_customer.php)(separate file )
+
+
+<?php
+$servername = "your_servername";
+$username = "your_username";
+$password = "your_password";
+$dbname = "customer_database";
+
+$conn = new mysqli($servername, $username, $password, $dbname);
+
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $name = $_POST['name'];
+    $email = $_POST['email'];
+    $phone = $_POST['phone'];
+    $customerClass = $_POST['customer_class'];
+
+    $sql = "SELECT * FROM customers WHERE email = '$email'";
+    $result = $conn->query($sql);
+
+    if ($result->num_rows > 0) {
+        $row = $result->fetch_assoc();
+        $customerDetails = "Name: " . $row['name'] . "\n";
+        $customerDetails .= "Email: " . $row['email'] . "\n";
+        $customerDetails .= "Phone: " . $row['phone'] . "\n";
+        $customerDetails .= "Customer Class: " . $row['customer_class'];
+
+        echo $customerDetails;
+    } else {
+        // Customer does not exist, you can choose to insert the new customer into the database
+        echo "Customer does not exist in the database.";
+    }
+} else {
+    echo "Invalid request.";
+}
+
+$conn->close();
+?>
+
+*******************************************************
+
+
+
+Step 4: Testing
+* 		Create the database and table in your MySQL database.
+* 		Place the UserInput.html and check_customer.php files in your web server directory.
+* 		Access UserInput.html through a web browser.
+* 		Enter customer details in the form and click "Submit."
+* 		Check the alerts for customer details or messages.
+Note: Ensure that you replace placeholder values in the database connection section with your actual database credentials. Also, consider implementing more robust security measures and error handling for a production environment.
