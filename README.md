@@ -9,4 +9,6 @@ write a php script(process.php)  to process details of existing users like name,
 Q2
 create html form to accept customer details like name,emaiul,phone,customer_class depending on purchase history[premium,gold,standard] include necessary vvalidations for all fields(phno 10 digits and should start with 0/6/9,name strictly alphabetical,email in strict email format with 6 dot domains) write function to check if customer already exists in database, in case customer exists,send details of customer as asynchronous response to html page(Userinput.html) and display details as a session
 
+OKKK??
+
 https://github.com/absterjr/Mit-Manipal-DSE-Lab
