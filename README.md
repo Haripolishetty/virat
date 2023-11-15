@@ -19,3 +19,5 @@ ERRI PUKA RAHUL MANADHI SAME QUESTION
 
 
 rey pavan nuv upload chesevi ni name tho qno tho petu
+
+index.html and process.php di database lo kuda store cheyali update cheyandi
