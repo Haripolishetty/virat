@@ -49,3 +49,6 @@ Connection failed: php_network_getaddresses: getaddrinfo failed: No such host is
 rey INA here 1st question lo meeru pettina prakaram database adagale only 2nd lo adigaru database include cheyamani
 
 aarush inka database lite ra signup login chupiddam. EVAR CODE VADAVU fast ga cheppu
+
+AREY SIGNUP KUDA PANICHEYATLEE RAAA
+
