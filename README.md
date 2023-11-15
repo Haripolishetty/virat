@@ -12,3 +12,5 @@ create html form to accept customer details like name,emaiul,phone,customer_clas
 OKKK??
 
 https://github.com/absterjr/Mit-Manipal-DSE-Lab
+
+rei files chala ayyponay naming chudandi - rahul
