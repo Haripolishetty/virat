@@ -19,11 +19,12 @@ evar code di idi? pavan? dantlo table eh create ledu
 AREY FINAL CODE CAPS LO SAVE CHESI PAMPANDI-AARUSH
 answer pettanu chudandi working fine q1 petta -----ina here
 database pettava @INA -Aarush
-
-anirudh code lo database ki save ela cheyalra? asal table eh create cheyle 
+ code lo database ki save ela cheyalra? asal table eh create cheyle 
 User Details:
 Name: rahul
 Phone: 01234567890
 Address: esfasaf`
 Password: $2y$10$j0PZG9hEImHHkRKpWGGhOujySpjshgPz7hhKknZolznuX9JFxm3ai
 anni details kottaka idi output ostundi - RAHUL
+
+INA here (pawn told me not to do , he said he is editing wait for 10min , so im not trying )
