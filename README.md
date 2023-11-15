@@ -32,4 +32,5 @@ $username = "root";
 $password = "";
 $dbname = "webtech";
 -AARUSH
+evar code di idi? pavan? dantlo table eh create ledu
 
