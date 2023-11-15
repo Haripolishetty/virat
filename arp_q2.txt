@@ -1,0 +1,116 @@
+<?php
+// Function to process the form data
+function processData() {
+    if (isset($_POST['submit'])) {
+        // Process existing user data
+        $userDetails = array(
+            "name" => $_POST['name'],
+            "phone" => $_POST['phone'],
+            "address" => $_POST['address']
+        );
+        // Process the details (e.g., save to database)
+        // ...
+
+        echo "Existing user processed.<br>";
+    }
+
+    if (isset($_POST['signup'])) {
+        // Process new user data
+        $password = $_POST['password'];
+        $confirmPassword = $_POST['confirm_password'];
+
+        // Regular expression for password validation
+        $passwordRegex = "/^(?=.*[a-z])(?=.*[A-Z]{2,})(?=.*\d)(?=.*[-@$])[A-Za-z\d@$!%*?&]{10,}$/";
+
+        if ($password === $confirmPassword && preg_match($passwordRegex, $password)) {
+            $newUserDetails = array(
+                "name" => $_POST['new_name'],
+                "phone" => $_POST['new_phone'],
+                "address" => $_POST['new_address'],
+                "password" => $password // Normally you would hash this before storing
+            );
+            // Process the details (e.g., save to database)
+            // ...
+
+            echo "New user signed up.<br>";
+        } else {
+            // Handle invalid or mismatched password
+            echo "Invalid or mismatched password.<br>";
+        }
+    }
+}
+?>
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>User Form</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f8f9fa;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        form {
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 400px;
+            text-align: center;
+            margin: 20px;
+        }
+
+        h2 {
+            color: #333;
+            margin-top: 0;
+        }
+
+        input {
+            width: calc(100% - 20px);
+            padding: 10px;
+            margin-bottom: 15px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        input[type="submit"] {
+            background-color: #4caf50;
+            color: #fff;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <?php processData(); ?>
+
+    <form action="process.php" method="post">
+        <!-- Fields for Existing Users -->
+        <h2>Existing User</h2>
+        Name: <input type="text" name="name" required><br>
+        Phone Number: <input type="tel" name="phone" required><br>
+        Address: <input type="text" name="address" required><br>
+        <input type="submit" name="submit" value="Submit">
+
+        <!-- Fields for New Users -->
+        <h2>New User</h2>
+        Name: <input type="text" name="new_name" required><br>
+        Phone Number: <input type="tel" name="new_phone" required><br>
+        Address: <input type="text" name="new_address" required><br>
+        Password: <input type="password" name="password" required><br>
+        Confirm Password: <input type="password" name="confirm_password" required><br>
+        <input type="submit" name="signup" value="Sign Up">
+    </form>
+</body>
+</html>
