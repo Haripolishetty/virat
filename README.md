@@ -17,4 +17,4 @@ $dbname = "webtech";
 evar code di idi? pavan? dantlo table eh create ledu
 
 AREY FINAL CODE CAPS LO SAVE CHESI PAMPANDI-AARUSH
-
+answer pettanu chudandi working fine q1 petta -----ina here
