@@ -27,5 +27,9 @@ databse name and stuff meru ivvandi -pavan (ni code ni patti ista just mention c
 ni peru toni anni oke file upload cheyandi
 
 
-
+$servername = "localhost";
+$username = "root";
+$password = "";
+$dbname = "webtech";
+-AARUSH
 
