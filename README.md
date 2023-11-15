@@ -22,3 +22,9 @@ rey pavan nuv upload chesevi ni name tho qno tho petu
 
 index.html and process.php di database lo kuda store cheyali update cheyandi
 AREY HARI NUV AAGU RA CONFUSE AVTUNA EVAR EM PEDTHUNARO ANIRUDH INKA PAVAN PEDTHUNARU CHALU VALLU ANNI OKATE FILE LO PETTI ISTAR
+
+databse name and stuff meru ivvandi -pavan
+
+
+
+
