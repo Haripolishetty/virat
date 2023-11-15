@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customer Details Form</title>
+</head>
+<body>
+    <form id="customerForm" onsubmit="submitForm(event)">
+        <label for="name">Name:</label>
+        <input type="text" name="name" pattern="[A-Za-z]+" required><br>
+
+        <label for="email">Email:</label>
+        <input type="email" name="email" pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$" required><br>
+
+        <label for="phone">Phone Number:</label>
+        <input type="tel" name="phone" pattern="[0-9]{10}" required><br>
+
+        <label for="customerClass">Customer Class:</label>
+        <select name="customerClass" required>
+            <option value="premium">Premium</option>
+            <option value="gold">Gold</option>
+            <option value="standard">Standard</option>
+        </select><br>
+
+        <input type="submit" value="Submit">
+    </form>
+
+    <div id="customerDetails"></div>
+
+    <script>
+        function submitForm(event) {
+            event.preventDefault();
+
+            // Get form data
+            const formData = new FormData(document.getElementById('customerForm'));
+
+            // Send form data to the server for processing
+            fetch('pawn2.php', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                // Display customer details on the page
+                document.getElementById('customerDetails').innerHTML = data;
+            })
+            .catch(error => console.error('Error:', error));
+        }
+    </script>
+</body>
+</html>
