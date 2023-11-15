@@ -28,3 +28,9 @@ Password: $2y$10$j0PZG9hEImHHkRKpWGGhOujySpjshgPz7hhKknZolznuX9JFxm3ai
 anni details kottaka idi output ostundi - RAHUL
 
 INA here (pawn told me not to do , he said he is editing wait for 10min , so im not trying )
+
+
+
+
+
+# PAWNQ1FINA AND SIGNUP ARE LINkED THIS IS THE FULL FIRST QUESTION.
