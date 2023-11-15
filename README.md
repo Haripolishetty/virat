@@ -29,6 +29,8 @@ anni details kottaka idi output ostundi - RAHUL
 
 INA here (pawn told me not to do , he said he is editing wait for 10min , so im not trying )
 
+Q1 lo na phpadmin table peru q1 petti name phoneno address ani table create chesa ipudu existing users lo kottinavi akada table lo save avali-AARUSH
+
 
 
 
