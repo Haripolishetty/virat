@@ -37,3 +37,5 @@ Q1 lo na phpadmin table peru q1 petti name phoneno address ani table create ches
 
 # PAWNQ1FINA AND SIGNUP ARE LINkED THIS IS THE FULL FIRST QUESTION.
 database lo table name em petali?-AArush
+
+rei pawan final code lo signup panchestale inka database lo em ivvali? aarush nuv chesindi caps lo upload chey ra pls
