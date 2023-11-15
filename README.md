@@ -40,3 +40,9 @@ database lo table name em petali?-AArush
 users -table name
 
 rei pawan final code lo signup panchestale inka database lo em ivvali? aarush nuv chesindi caps lo upload chey ra pls
+
+
+Warning: mysqli::__construct(): php_network_getaddresses: getaddrinfo failed: No such host is known. in C:\xampp\htdocs\webtech\signup.php on line 9
+
+Warning: mysqli::__construct(): (HY000/2002): php_network_getaddresses: getaddrinfo failed: No such host is known. in C:\xampp\htdocs\webtech\signup.php on line 9
+Connection failed: php_network_getaddresses: getaddrinfo failed: No such host is known. SIGNUP KI ILA OSTUNDII RA PAVAN-AARUSH
