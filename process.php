@@ -1,37 +1,40 @@
 <?php
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $name = $_POST["name"];
-    $phone = $_POST["phone"];
-    $address = $_POST["address"];
-    $password = $_POST["password"];
-    $confirm_password = $_POST["confirm_password"];
+    $userDetails = array();
 
-    // Validate password strength using regular expressions
-    $password_pattern = '/^(?=.*[a-z])(?=.*[A-Z]{2,})(?=.*\d)(?=.*[-@$])[\w@$#%^&*()_-]{10,}$/';
-
-    if (!preg_match($password_pattern, $password)) {
-        die("Password does not meet the requirements. Please try again.");
-    }
-
-    // Check if the password and confirm password match
-    if ($password !== $confirm_password) {
-        die("Passwords do not match. Please try again.");
-    }
-
-    // Store user details in an associative array
-    $user_details = array(
-        "name" => $name,
-        "phone" => $phone,
-        "address" => $address,
-        "password" => $password
-    );
-
-    // Do something with the user details (e.g., store in a database, display, etc.)
+    // Validate and sanitize user inputs
+    $userDetails['name'] = filter_var($_POST['name'], FILTER_SANITIZE_STRING);
+    $userDetails['phone'] = filter_var($_POST['phone'], FILTER_SANITIZE_NUMBER_INT);
+    $userDetails['address'] = filter_var($_POST['address'], FILTER_SANITIZE_STRING);
     
-    // Example: Display user details
-    echo "<h2>User Details:</h2>";
-    foreach ($user_details as $key => $value) {
-        echo "<p><strong>$key:</strong> $value</p>";
+    // Validate and enforce strong password requirements
+    $password = $_POST['password'];
+    $confirmPassword = $_POST['confirm_password'];
+
+    $passwordRequirements = "/^(?=.*[a-z])(?=.*[A-Z]{2,})(?=.*[0-9])(?=.*[-@$])\S{10,}$/";
+
+    if ($password !== $confirmPassword) {
+        die("Password and Confirm Password do not match.");
     }
+
+    if (!preg_match($passwordRequirements, $password)) {
+        die("Password does not meet the required criteria.");
+    }
+
+    // If all validations pass, store user details
+    // You can modify this part to store the details in a database or any other desired location.
+    // For now, let's just print the details.
+
+    echo "User Details:<br>";
+    echo "Name: " . $userDetails['name'] . "<br>";
+    echo "Phone: " . $userDetails['phone'] . "<br>";
+    echo "Address: " . $userDetails['address'] . "<br>";
+
+    // You may want to hash the password before storing it in a database
+    echo "Password: " . password_hash($password, PASSWORD_DEFAULT);
+} else {
+    // Redirect or display an error if someone tries to access process.php directly.
+    header("Location: index.html");
+    exit();
 }
 ?>
