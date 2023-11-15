@@ -39,26 +39,9 @@ Q1 lo na phpadmin table peru q1 petti name phoneno address ani table create ches
 database lo table name em petali?-AArush
 users -table name
 
-rei pawan final code lo signup panchestale inka database lo em ivvali? aarush nuv chesindi caps lo upload chey ra pls
 
-
-Warning: mysqli::__construct(): php_network_getaddresses: getaddrinfo failed: No such host is known. in C:\xampp\htdocs\webtech\signup.php on line 9
-
-Warning: mysqli::__construct(): (HY000/2002): php_network_getaddresses: getaddrinfo failed: No such host is known. in C:\xampp\htdocs\webtech\signup.php on line 9
-Connection failed: php_network_getaddresses: getaddrinfo failed: No such host is known. SIGNUP KI ILA OSTUNDII RA PAVAN-AARUSH
-rey INA here 1st question lo meeru pettina prakaram database adagale only 2nd lo adigaru database include cheyamani
-
-aarush inka database lite ra signup login chupiddam. EVAR CODE VADAVU fast ga cheppu
-
-AREY SIGNUP KUDA PANICHEYATLEE RAAA
-
-pawan di lite ra prashanth di chudu
-AREY LAST 20MIN RA PLZ Q1 Q2
-
-
-arey risk prashant code css undi  - human tyoed ledhu dorukeshtaru --daddy and ina
-AREY PAVAN INA Q1 Q2 petandi ra plz-AARUSH
-PLZZZZZZ RAAAA EM PANICHEYATTLEEEEEE
 
 aarush evar code chupistunnav?
 q2 working code petttesa -- ina here
+
+AREY Q2?? 
