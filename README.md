@@ -47,3 +47,5 @@ Warning: mysqli::__construct(): php_network_getaddresses: getaddrinfo failed: No
 Warning: mysqli::__construct(): (HY000/2002): php_network_getaddresses: getaddrinfo failed: No such host is known. in C:\xampp\htdocs\webtech\signup.php on line 9
 Connection failed: php_network_getaddresses: getaddrinfo failed: No such host is known. SIGNUP KI ILA OSTUNDII RA PAVAN-AARUSH
 rey INA here 1st question lo meeru pettina prakaram database adagale only 2nd lo adigaru database include cheyamani
+
+aarush inka database lite ra signup login chupiddam. EVAR CODE VADAVU fast ga cheppu
