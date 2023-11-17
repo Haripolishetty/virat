@@ -1,0 +1,9 @@
+name of your new table (e.g., customers) and specify the number of columns (for our case, it's 5: id, name, email, phone, class, and created_at).
+Click the "Go" button.
+ Enter the column details as follows:
+id: Name it id, type INT, length/value 11, check the A_I (Auto Increment) box, and click the "Primary" link to make it a primary key.
+name: Name it name, type VARCHAR, length/value 100.
+email: Name it email, type VARCHAR, length/value 100. Click on "Index" and choose "UNIQUE".
+phone: Name it phone, type VARCHAR, length/value 20.
+class: Name it class, type VARCHAR, length/value 50.
+created_at: Name it created_at, type TIMESTAMP, and under default, choose "CURRENT_TIMESTAMP".
