@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customer Details Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        input {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 16px;
+            box-sizing: border-box;
+        }
+
+        button {
+            padding: 10px;
+            background-color: #4caf50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Customer Details Form</h2>
+
+    <form id="customerForm" onsubmit="submitForm(event)">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required>
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
+
+        <label for="phone">Phone:</label>
+        <input type="tel" id="phone" name="phone" required>
+
+        <label for="customerClass">Customer Class:</label>
+        <input type="text" id="customerClass" name="customerClass" required>
+
+        <button type="submit">Submit</button>
+    </form>
+
+    <div id="result"></div>
+
+    <script>
+        function submitForm(event) {
+            event.preventDefault();
+
+            // Get form values
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const phone = document.getElementById('phone').value;
+            const customerClass = document.getElementById('customerClass').value;
+
+            // Perform client-side validation
+            if (!validateEmail(email)) {
+                alert('Invalid email address');
+                return;
+            }
+
+            // Placeholder for server-side validation and database checking
+            checkUserInDatabase(name, email, phone, customerClass);
+        }
+
+        function validateEmail(email) {
+            // Basic email validation, you may use a more robust validation method
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return emailRegex.test(email);
+        }
+
+        function checkUserInDatabase(name, email, phone, customerClass) {
+            // Placeholder for checking user in the database
+            // In a real-world scenario, this would involve an asynchronous request to the server
+
+            // Simulate asynchronous response after 1 second
+            setTimeout(() => {
+                const resultDiv = document.getElementById('result');
+                resultDiv.innerHTML = `<p>User Details:</p>
+                                        <p>Name: ${name}</p>
+                                        <p>Email: ${email}</p>
+                                        <p>Phone: ${phone}</p>
+                                        <p>Customer Class: ${customerClass}</p>`;
+            }, 1000);
+        }
+    </script>
+
+</body>
+</html>
