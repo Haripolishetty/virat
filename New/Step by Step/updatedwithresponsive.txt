@@ -1,0 +1,121 @@
+<?php
+// Database connection details
+$host = 'localhost';
+$db = 'your_db';  // Your DB name 
+$user = 'root';
+$pass = '';
+
+// Connect to database
+try {
+    $pdo = new PDO("mysql:host=$host;dbname=$db", $user, $pass);
+} catch (PDOException $e) {
+    die("Could not connect to the database $db :" . $e->getMessage());
+}
+
+// Function to check if user exists in the database
+function userExists($email, $pdo) {
+    $stmt = $pdo->prepare("SELECT * FROM customers WHERE email = ?");
+    $stmt->execute([$email]);
+    return $stmt->fetch(PDO::FETCH_ASSOC);
+}
+
+// Handling form submission
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $name = $_POST['name'];
+    $email = $_POST['email'];
+    $phone = $_POST['phone'];
+    $class = $_POST['class'];
+
+    // Basic validation
+    if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        echo "<p>Invalid email format</p>";
+    } else {
+        if ($user = userExists($email, $pdo)) {
+            echo "<p>User already exists. Here are the details:</p>";
+            echo "<p>Name: " . htmlspecialchars($user['name']) . "</p>";
+            echo "<p>Email: " . htmlspecialchars($user['email']) . "</p>";
+            echo "<p>Phone: " . htmlspecialchars($user['phone']) . "</p>";
+            echo "<p>Class: " . htmlspecialchars($user['class']) . "</p>";
+        } else {
+            $stmt = $pdo->prepare("INSERT INTO customers (name, email, phone, class) VALUES (?, ?, ?, ?)");
+            $stmt->execute([$name, $email, $phone, $class]);
+            echo "<p>New user added</p>";
+        }
+    }
+}
+?>
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Customer Form</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            padding-top: 50px;
+        }
+        .container {
+            max-width: 600px;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        .response-message {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2 class="mb-4">Customer Registration Form</h2>
+        <form method="post" action="customer_form.php" class="needs-validation" novalidate>
+            <div class="form-group">
+                <label for="name">Name:</label>
+                <input type="text" class="form-control" id="name" name="name" required>
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" class="form-control" id="email" name="email" required>
+            </div>
+
+            <div class="form-group">
+                <label for="phone">Phone:</label>
+                <input type="tel" class="form-control" id="phone" name="phone" required>
+            </div>
+
+            <div class="form-group">
+                <label for="class">Customer Class:</label>
+                <input type="text" class="form-control" id="class" name="class" required>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+
+        <div id="response-message" class="response-message"></div>
+    </div>
+
+    <!-- Bootstrap and jQuery libraries -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+    <script>
+        document.querySelector('form').addEventListener('submit', function(event) {
+            event.preventDefault();
+            
+            var formData = new FormData(this);
+            fetch('customer_form.php', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('response-message').innerHTML = data;
+            })
+            .catch(error => console.error('Error:', error));
+        });
+    </script>
+</body>
+</html>
